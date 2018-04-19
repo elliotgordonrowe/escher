@@ -296,15 +296,12 @@ JavaScript API
 
        .. js:attribute:: options.tooltip_component
 
-          (Default: ``escher.Tooltip.DefaultTooltip``) A function or `tinier`_
-          component to show when hoving over reactions, metabolites, and
-          genes. If a function is passed, the function will be called with a
-          single object as an argument with two attributes: state - containing
-          the data associated with that reaction, metabolite or gene; and el - a
-          HTML node that you can render content in. If you need to manage state
-          for your tooltip, you can alternatively pass a tinier component.  See
-          ``escher.Tooltip.DefaultTooltip`` in the source code for an example of
-          a tinier component that defines the default tooltips.
+          (Default: ``escher.Tooltip.DefaultTooltip``) Accepts a Preact component 
+          to display instead of the default Escher tooltip. Must include a getSize
+          function that returns an object with both width and height attributes in 
+          order to properly display the tooltip within the viewable area.
+          ``Builder.pass_tooltip_component_props`` can be used to pass updated 
+          information to the tooltip if a reactive interface is desired.
 
        .. js:attribute:: options.enable_tooltips
 
