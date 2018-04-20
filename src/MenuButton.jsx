@@ -16,9 +16,6 @@ import dataStyles from './data_styles'
 class MenuButton extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      disabled: _.contains(props.disabledButtons, props.name)
-    }
   }
 
   handleFileInput (file) {
@@ -65,7 +62,7 @@ class MenuButton extends Component {
           className='menuButton'
           tabindex={this.state.disabled ? '-1' : '0'}
           onClick={this.state.disabled ? null : this.props.onClick}
-          id={this.state.disabled ? 'disabled' : ''}
+          id={_.contains(this.props.disabledButtons, this.props.name) ? 'disabled' : ''}
         >
           {this.props.name}
         </li>
