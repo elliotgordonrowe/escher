@@ -48,6 +48,13 @@ JavaScript API
           best in the latest versions of Chrome, Firefox and Internet
           Explorer. Safari works better with this turned off.
 
+       .. js:attribute:: options.disabled_buttons
+
+          (Default: ``[]``) Accepts an array of strings which correspond to the 
+          text of the menu buttons. Disables the buttons corresponding to those
+          text labels. Note that the "Clear [...]" buttons within the Data menu
+          are disabled and re-enabled depending on the loaded data.
+
        .. js:attribute:: options.enable_editing
 
           (Default: ``true``) If true then display the map editing functions. If
@@ -296,8 +303,8 @@ JavaScript API
 
        .. js:attribute:: options.tooltip_component
 
-          (Default: ``escher.Tooltip.DefaultTooltip``) Accepts a Preact component 
-          to display instead of the default Escher tooltip. Must include a getSize
+          (Default: ``escher.Tooltip.DefaultTooltip``) Accepts a component to 
+          display instead of the default Escher tooltip. Must include a getSize
           function that returns an object with both width and height attributes in 
           order to properly display the tooltip within the viewable area.
           ``Builder.pass_tooltip_component_props`` can be used to pass updated 
@@ -305,10 +312,10 @@ JavaScript API
 
        .. js:attribute:: options.enable_tooltips
 
-          (Default: `[`label`]`) Determines the mouseover or touch event required 
-          to show the related tooltip.['label'] will show tooltips upon mouseover 
-          or touch of the reaction or metabolite labels whereas ['object'] will 
-          show the the tooltips over the reaction line segments and metabolite 
+          (Default: `['label', 'object']`) Determines the mouseover or touch event 
+          required to show the related tooltip. ['label'] will show tooltips upon 
+          mouseover or touch of the reaction or metabolite labels whereas ['object'] 
+          will show the the tooltips over the reaction line segments and metabolite 
           circles. Can be set as an empty array to disable tooltips or can have 
           both options passed in to enable tooltips over both labels and objects.
 
