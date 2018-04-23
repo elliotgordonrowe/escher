@@ -382,6 +382,16 @@ JavaScript API
 
        Enter text mode.
 
+    .. js:function:: pass_tooltip_component_props(props)
+
+       :param object props: The data object that will be passed to the tooltip.
+
+    .. js:function:: pass_settings_menu_props(props)
+
+       :param object props: The data object that will be passed to the settings
+                          menu. can pass ``{display: true}`` to render the menu
+                          programmatically.
+
     .. js:function:: set_reaction_data(data)
 
        :param array data: An array of 1 or 2 objects, where each object has keys
