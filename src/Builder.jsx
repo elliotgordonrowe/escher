@@ -89,7 +89,7 @@ class Builder {
       zoom_to_element: null,
       full_screen_button: false,
       ignore_bootstrap: false,
-      disabled_buttons: null,
+      disabled_buttons: [],
       // map, model, and styles
       starting_reaction: null,
       never_ask_before_quit: false,
@@ -429,16 +429,13 @@ class Builder {
     this.map.key_manager.toggle(this.options.enable_keys)
 
     // Disable clears
-    if (this.options.disabled_buttons === null) {
-      this.options.disabled_buttons = [];
-    }
-    if (!this.options.reaction_data && this.options.disabled_buttons) {
+    if (!this.options.reaction_data) {
       this.options.disabled_buttons.push('Clear reaction data')
     }
-    if (!this.options.gene_data && this.options.disabled_buttons) {
+    if (!this.options.gene_data) {
       this.options.disabled_buttons.push('Clear gene data')
     }
-    if (!this.options.metabolite_data && this.options.disabled_buttons) {
+    if (!this.options.metabolite_data) {
       this.options.disabled_buttons.push('Clear metabolite data')
     }
 

@@ -48,6 +48,13 @@ JavaScript API
           best in the latest versions of Chrome, Firefox and Internet
           Explorer. Safari works better with this turned off.
 
+       .. js:attribute:: options.disabled_buttons
+
+          (Default: ``[]``) Accepts an array of strings which correspond to the 
+          text of the menu buttons. Disables the buttons corresponding to those
+          text labels. Note that the "Clear [...]" buttons within the Data menu
+          are disabled and re-enabled depending on the loaded data.
+
        .. js:attribute:: options.enable_editing
 
           (Default: ``true``) If true then display the map editing functions. If
@@ -292,23 +299,20 @@ JavaScript API
 
        .. js:attribute:: options.tooltip_component
 
-          (Default: ``escher.Tooltip.DefaultTooltip``) A function or `tinier`_
-          component to show when hoving over reactions, metabolites, and
-          genes. If a function is passed, the function will be called with a
-          single object as an argument with two attributes: state - containing
-          the data associated with that reaction, metabolite or gene; and el - a
-          HTML node that you can render content in. If you need to manage state
-          for your tooltip, you can alternatively pass a tinier component.  See
-          ``escher.Tooltip.DefaultTooltip`` in the source code for an example of
-          a tinier component that defines the default tooltips.
+          (Default: ``escher.Tooltip.DefaultTooltip``) Accepts a component to 
+          display instead of the default Escher tooltip. Must include a getSize
+          function that returns an object with both width and height attributes in 
+          order to properly display the tooltip within the viewable area.
+          ``Builder.pass_tooltip_component_props`` can be used to pass updated 
+          information to the tooltip if a reactive interface is desired.
 
        .. js:attribute:: options.enable_tooltips
 
-          (Default: `[`label`]`) Determines the mouseover or touch event required
-          to show the related tooltip.['label'] will show tooltips upon mouseover
-          or touch of the reaction or metabolite labels whereas ['object'] will
-          show the the tooltips over the reaction line segments and metabolite
-          circles. Can be set as an empty array to disable tooltips or can have
+          (Default: `['label', 'object']`) Determines the mouseover or touch event 
+          required to show the related tooltip. ['label'] will show tooltips upon 
+          mouseover or touch of the reaction or metabolite labels whereas ['object'] 
+          will show the the tooltips over the reaction line segments and metabolite 
+          circles. Can be set as an empty array to disable tooltips or can have 
           both options passed in to enable tooltips over both labels and objects.
 
        **Callbacks**
@@ -373,6 +377,16 @@ JavaScript API
     .. js:function:: text_mode()
 
        Enter text mode.
+
+    .. js:function:: pass_tooltip_component_props(props)
+
+       :param object props: The data object that will be passed to the tooltip.
+
+    .. js:function:: pass_settings_menu_props(props)
+
+       :param object props: The data object that will be passed to the settings
+                          menu. can pass ``{display: true}`` to render the menu
+                          programmatically.
 
     .. js:function:: set_reaction_data(data)
 
